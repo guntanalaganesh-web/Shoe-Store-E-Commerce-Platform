@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: shoe-store-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-adminpassword}
+      MONGO_INITDB_DATABASE: shoestore
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./infrastructure/docker/mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
+    networks:
+      - shoe-store-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: shoe-store-app
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - MONGODB_URI=mongodb://shoestore:shoestore123@mongodb:27017/shoestore
+      - SESSION_SECRET=dev-session-secret-change-in-production
+      - AWS_REGION=${AWS_REGION:-us-east-1}
+      - S3_BUCKET_NAME=${S3_BUCKET_NAME:-shoe-store-assets}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID:-}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src:ro
+      - ./public:/app/public:ro
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - shoe-store-network
+    restart: unless-stopped
+
+  # Mongo Express (Database Admin UI)
+  mongo-express:
+    image: mongo-express:latest
+    container_name: shoe-store-mongo-express
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD:-adminpassword}
+      ME_CONFIG_MONGODB_URL: mongodb://admin:${MONGO_PASSWORD:-adminpassword}@mongodb:27017/
+      ME_CONFIG_BASICAUTH: false
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongodb
+    networks:
+      - shoe-store-network
+
+networks:
+  shoe-store-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

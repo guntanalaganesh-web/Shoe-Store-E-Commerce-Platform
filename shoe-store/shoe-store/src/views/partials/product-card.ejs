@@ -1,0 +1,33 @@
+<article class="product-card card">
+    <a href="/product/<%= product.slug %>" class="product-card-image">
+        <img src="<%= product.images[0]?.url || '/images/placeholder.jpg' %>" alt="<%= product.name %>">
+        <% if (product.salePrice && product.salePrice < product.price) { %>
+            <span class="product-card-badge">SALE</span>
+        <% } %>
+        <button class="product-card-wishlist" onclick="event.preventDefault(); Product.addToWishlist('<%= product._id %>')">
+            ♡
+        </button>
+    </a>
+    <div class="product-card-body">
+        <p class="product-card-brand"><%= product.brand %></p>
+        <h3 class="product-card-title">
+            <a href="/product/<%= product.slug %>"><%= product.name %></a>
+        </h3>
+        <div class="product-card-price">
+            <% if (product.salePrice && product.salePrice < product.price) { %>
+                <span class="price-current">$<%= product.salePrice.toFixed(2) %></span>
+                <span class="price-original">$<%= product.price.toFixed(2) %></span>
+            <% } else { %>
+                <span class="price-current">$<%= product.price.toFixed(2) %></span>
+            <% } %>
+        </div>
+        <% if (product.rating && product.rating.count > 0) { %>
+            <div class="product-card-rating">
+                <% for (let i = 1; i <= 5; i++) { %>
+                    <span><%= i <= Math.round(product.rating.average) ? '★' : '☆' %></span>
+                <% } %>
+                <span class="rating-count">(<%= product.rating.count %>)</span>
+            </div>
+        <% } %>
+    </div>
+</article>

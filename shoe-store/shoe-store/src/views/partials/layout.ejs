@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title + ' | Shoe Store' : 'Shoe Store' %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-logo">
+                    👟 <span>Shoe</span>Store
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="/shop">Shop All</a></li>
+                    <li><a href="/shop?gender=Men">Men</a></li>
+                    <li><a href="/shop?gender=Women">Women</a></li>
+                    <li><a href="/shop?category=Running">Running</a></li>
+                    <li><a href="/shop?category=Casual">Casual</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <form action="/search" method="GET" class="search-form">
+                        <input type="text" name="q" id="search-input" placeholder="Search..." class="search-input">
+                    </form>
+                    
+                    <% if (user) { %>
+                        <div class="dropdown">
+                            <a href="/auth/profile" class="nav-user">
+                                👤 <%= user.firstName %>
+                            </a>
+                        </div>
+                        <% if (user.role === 'admin') { %>
+                            <a href="/admin" class="btn btn-sm btn-secondary">Admin</a>
+                        <% } %>
+                        <a href="/auth/logout" class="btn btn-sm btn-outline">Logout</a>
+                    <% } else { %>
+                        <a href="/auth/login" class="btn btn-sm btn-outline">Login</a>
+                        <a href="/auth/register" class="btn btn-sm btn-primary">Sign Up</a>
+                    <% } %>
+                    
+                    <a href="/cart" class="nav-cart">
+                        🛒
+                        <span class="cart-count" style="display: <%= cart.items.length > 0 ? 'flex' : 'none' %>">
+                            <%= cart.items.reduce((sum, item) => sum + item.quantity, 0) %>
+                        </span>
+                    </a>
+                </div>
+                
+                <button class="menu-toggle" id="menu-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Alerts -->
+    <% if (typeof success !== 'undefined' && success) { %>
+        <div class="alert alert-success container">
+            ✓ <%= success %>
+        </div>
+    <% } %>
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="alert alert-error container">
+            ✕ <%= error %>
+        </div>
+    <% } %>
+
+    <!-- Main Content -->
+    <main>
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">👟 ShoeStore</div>
+                    <p>Your destination for premium footwear. Quality shoes for every occasion.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="/shop?gender=Men">Men's Shoes</a></li>
+                        <li><a href="/shop?gender=Women">Women's Shoes</a></li>
+                        <li><a href="/shop?category=Running">Running</a></li>
+                        <li><a href="/shop?category=Casual">Casual</a></li>
+                        <li><a href="/shop?featured=true">Featured</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/shipping">Shipping Info</a></li>
+                        <li><a href="/returns">Returns</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Account</h4>
+                    <ul class="footer-links">
+                        <li><a href="/auth/profile">My Account</a></li>
+                        <li><a href="/auth/profile#orders">Orders</a></li>
+                        <li><a href="/wishlist">Wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ShoeStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

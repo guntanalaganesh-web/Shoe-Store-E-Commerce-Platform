@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store E-Commerce Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <nav class="flex items-center justify-between">
+                <a href="#" class="text-2xl font-bold text-gray-900">
+                    👟 <span class="text-blue-600">Shoe</span>Store
+                </a>
+                <ul class="hidden md:flex items-center gap-8">
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Shop All</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Men</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Women</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Running</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-blue-600 font-medium">Casual</a></li>
+                </ul>
+                <div class="flex items-center gap-4">
+                    <input type="text" placeholder="Search..." class="hidden md:block px-4 py-2 border border-gray-200 rounded-lg w-48">
+                    <button class="px-4 py-2 text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50">Login</button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Sign Up</button>
+                    <a href="#" class="relative">
+                        <span class="text-2xl">🛒</span>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl font-extrabold mb-4">Step Into <span class="text-blue-400">Style</span></h1>
+                    <p class="text-xl text-gray-300 mb-8">Discover our collection of premium footwear. From running to casual, find your perfect pair.</p>
+                    <div class="flex gap-4">
+                        <button class="px-8 py-4 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700 transition">Shop Now</button>
+                        <button class="px-8 py-4 border-2 border-white rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition">Featured</button>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="text-9xl transform -rotate-12">👟</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900">Shop by Category</h2>
+                <a href="#" class="text-blue-600 hover:underline">View All →</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-6 text-center text-white hover:transform hover:-translate-y-1 transition cursor-pointer">
+                    <span class="text-4xl block mb-3">🏃</span>
+                    <h3 class="font-semibold text-lg">Running</h3>
+                    <p class="text-blue-200 text-sm">48 Products</p>
+                </div>
+                <div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl p-6 text-center text-white hover:transform hover:-translate-y-1 transition cursor-pointer">
+                    <span class="text-4xl block mb-3">🏀</span>
+                    <h3 class="font-semibold text-lg">Basketball</h3>
+                    <p class="text-orange-200 text-sm">32 Products</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-600 to-green-800 rounded-xl p-6 text-center text-white hover:transform hover:-translate-y-1 transition cursor-pointer">
+                    <span class="text-4xl block mb-3">👟</span>
+                    <h3 class="font-semibold text-lg">Casual</h3>
+                    <p class="text-green-200 text-sm">67 Products</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-600 to-purple-800 rounded-xl p-6 text-center text-white hover:transform hover:-translate-y-1 transition cursor-pointer">
+                    <span class="text-4xl block mb-3">🥾</span>
+                    <h3 class="font-semibold text-lg">Boots</h3>
+                    <p class="text-purple-200 text-sm">24 Products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900">Featured Products</h2>
+                <a href="#" class="text-blue-600 hover:underline">View All →</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative aspect-square bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" class="w-full h-full object-cover group-hover:scale-105 transition">
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">SALE</span>
+                        <button class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-100">♡</button>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-500 text-sm uppercase tracking-wide">Nike</p>
+                        <h3 class="font-semibold text-gray-900 mt-1">Air Max 270</h3>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-lg font-bold text-gray-900">$129.99</span>
+                            <span class="text-sm text-gray-400 line-through">$150.00</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2 text-yellow-400 text-sm">
+                            ★★★★★ <span class="text-gray-400">(128)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative aspect-square bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400" class="w-full h-full object-cover group-hover:scale-105 transition">
+                        <button class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-100">♡</button>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-500 text-sm uppercase tracking-wide">Adidas</p>
+                        <h3 class="font-semibold text-gray-900 mt-1">Ultraboost 22</h3>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-lg font-bold text-gray-900">$190.00</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2 text-yellow-400 text-sm">
+                            ★★★★★ <span class="text-gray-400">(89)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative aspect-square bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=400" class="w-full h-full object-cover group-hover:scale-105 transition">
+                        <span class="absolute top-3 left-3 bg-blue-600 text-white text-xs px-2 py-1 rounded font-semibold">HOT</span>
+                        <button class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-100">♡</button>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-500 text-sm uppercase tracking-wide">Jordan</p>
+                        <h3 class="font-semibold text-gray-900 mt-1">1 Retro High OG</h3>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-lg font-bold text-gray-900">$180.00</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2 text-yellow-400 text-sm">
+                            ★★★★★ <span class="text-gray-400">(234)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition group">
+                    <div class="relative aspect-square bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400" class="w-full h-full object-cover group-hover:scale-105 transition">
+                        <span class="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded font-semibold">SALE</span>
+                        <button class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-100">♡</button>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-500 text-sm uppercase tracking-wide">Vans</p>
+                        <h3 class="font-semibold text-gray-900 mt-1">Old Skool</h3>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-lg font-bold text-gray-900">$54.99</span>
+                            <span class="text-sm text-gray-400 line-through">$70.00</span>
+                        </div>
+                        <div class="flex items-center gap-1 mt-2 text-yellow-400 text-sm">
+                            ★★★★☆ <span class="text-gray-400">(567)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white rounded-xl p-8 text-center shadow-sm">
+                <h3 class="text-xl font-semibold mb-6 text-gray-900">Shop by Brand</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">Nike</a>
+                    <a href="#" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">Adidas</a>
+                    <a href="#" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">Puma</a>
+                    <a href="#" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">New Balance</a>
+                    <a href="#" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">Converse</a>
+                    <a href="#" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-semibold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition">Vans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <span class="text-4xl block mb-3">🚚</span>
+                    <h4 class="font-semibold mb-1">Free Shipping</h4>
+                    <p class="text-gray-400 text-sm">On orders over $100</p>
+                </div>
+                <div>
+                    <span class="text-4xl block mb-3">↩️</span>
+                    <h4 class="font-semibold mb-1">Easy Returns</h4>
+                    <p class="text-gray-400 text-sm">30-day return policy</p>
+                </div>
+                <div>
+                    <span class="text-4xl block mb-3">🔒</span>
+                    <h4 class="font-semibold mb-1">Secure Payment</h4>
+                    <p class="text-gray-400 text-sm">100% secure checkout</p>
+                </div>
+                <div>
+                    <span class="text-4xl block mb-3">💬</span>
+                    <h4 class="font-semibold mb-1">24/7 Support</h4>
+                    <p class="text-gray-400 text-sm">Always here to help</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AWS Architecture -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-12">☁️ AWS Infrastructure</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🖥️</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">EC2 + MongoDB</h3>
+                    <p class="text-gray-600 text-sm">MongoDB database hosted on EC2 instance with secure private subnet access</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">🐳</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">ECS Fargate</h3>
+                    <p class="text-gray-600 text-sm">Serverless container deployment with auto-scaling and load balancing</p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <span class="text-2xl">📦</span>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">S3 + CloudWatch</h3>
+                    <p class="text-gray-600 text-sm">Static assets storage and comprehensive monitoring with logs</p>
+                </div>
+            </div>
+            <div class="mt-8 bg-white rounded-xl p-6 shadow-sm">
+                <h4 class="font-semibold mb-4">Architecture Flow</h4>
+                <div class="flex flex-wrap items-center justify-center gap-4 text-sm">
+                    <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg">Route 53</span>
+                    <span>→</span>
+                    <span class="px-4 py-2 bg-green-100 text-green-800 rounded-lg">ALB</span>
+                    <span>→</span>
+                    <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-lg">ECS Fargate</span>
+                    <span>→</span>
+                    <span class="px-4 py-2 bg-orange-100 text-orange-800 rounded-lg">EC2 MongoDB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">👟 ShoeStore</h3>
+                    <p class="text-sm">Your destination for premium footwear. Quality shoes for every occasion.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Shop</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Men's Shoes</a></li>
+                        <li><a href="#" class="hover:text-white">Women's Shoes</a></li>
+                        <li><a href="#" class="hover:text-white">Running</a></li>
+                        <li><a href="#" class="hover:text-white">Casual</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Help</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+                        <li><a href="#" class="hover:text-white">Returns</a></li>
+                        <li><a href="#" class="hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Tech Stack</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>Node.js / Express</li>
+                        <li>MongoDB</li>
+                        <li>Docker / ECS Fargate</li>
+                        <li>AWS (EC2, S3, ALB)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2024 ShoeStore E-Commerce Platform. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

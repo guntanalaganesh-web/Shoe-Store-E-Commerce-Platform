@@ -1,0 +1,181 @@
+<%- include('../partials/header') %>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Step Into <span style="color: #3b82f6">Style</span></h1>
+                <p class="hero-subtitle">Discover our collection of premium footwear. From running to casual, find your perfect pair.</p>
+                <div class="hero-buttons">
+                    <a href="/shop" class="btn btn-primary btn-lg">Shop Now</a>
+                    <a href="/shop?featured=true" class="btn btn-outline btn-lg">Featured</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/images/hero-shoe.png" alt="Featured Shoe">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Shop by Category</h2>
+            <a href="/shop" class="btn btn-outline">View All</a>
+        </div>
+        <div class="grid grid-4">
+            <% const categoryImages = {
+                'Running': '🏃',
+                'Basketball': '🏀',
+                'Casual': '👟',
+                'Formal': '👔',
+                'Sneakers': '✨',
+                'Boots': '🥾',
+                'Sandals': '🩴',
+                'Athletic': '⚡'
+            }; %>
+            <% categories.slice(0, 4).forEach(cat => { %>
+                <a href="/shop?category=<%= cat._id %>" class="category-card">
+                    <div class="category-card-content">
+                        <span class="category-icon"><%= categoryImages[cat._id] || '👟' %></span>
+                        <h3 class="category-card-title"><%= cat._id %></h3>
+                        <p class="category-count"><%= cat.count %> Products</p>
+                    </div>
+                </a>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Featured Products</h2>
+            <a href="/shop?featured=true" class="btn btn-outline">View All</a>
+        </div>
+        <div class="grid grid-4">
+            <% featuredProducts.forEach(product => { %>
+                <%- include('../partials/product-card', { product }) %>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Brands Banner -->
+<section class="section">
+    <div class="container">
+        <div class="brands-banner">
+            <h3>Shop by Brand</h3>
+            <div class="brands-list">
+                <a href="/shop?brand=Nike" class="brand-item">Nike</a>
+                <a href="/shop?brand=Adidas" class="brand-item">Adidas</a>
+                <a href="/shop?brand=Puma" class="brand-item">Puma</a>
+                <a href="/shop?brand=New Balance" class="brand-item">New Balance</a>
+                <a href="/shop?brand=Converse" class="brand-item">Converse</a>
+                <a href="/shop?brand=Vans" class="brand-item">Vans</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New Arrivals -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">New Arrivals</h2>
+            <a href="/shop?sort=newest" class="btn btn-outline">View All</a>
+        </div>
+        <div class="grid grid-4">
+            <% newArrivals.forEach(product => { %>
+                <%- include('../partials/product-card', { product }) %>
+            <% }); %>
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-icon">🚚</span>
+                <h4>Free Shipping</h4>
+                <p>On orders over $100</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">↩️</span>
+                <h4>Easy Returns</h4>
+                <p>30-day return policy</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔒</span>
+                <h4>Secure Payment</h4>
+                <p>100% secure checkout</p>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💬</span>
+                <h4>24/7 Support</h4>
+                <p>Always here to help</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.category-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+.category-card:hover { transform: translateY(-4px); }
+.category-icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+.category-card-title { color: white; font-size: 1.25rem; margin-bottom: 0.5rem; }
+.category-count { color: #94a3b8; font-size: 0.875rem; }
+
+.brands-banner {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+.brands-banner h3 { margin-bottom: 1.5rem; }
+.brands-list { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+.brand-item {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--gray-200);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    transition: all 0.2s;
+}
+.brand-item:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.section-gray { background: var(--gray-100); }
+.section-dark { background: var(--darker); color: white; }
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+.feature-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+.feature-item h4 { margin-bottom: 0.5rem; }
+.feature-item p { color: var(--gray-400); }
+
+@media (max-width: 768px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+
+<%- include('../partials/footer') %>
